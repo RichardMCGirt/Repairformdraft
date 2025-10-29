@@ -40,10 +40,14 @@
             <option value="" selected disabled>Choose a branch…</option>
             <option>Raleigh</option><option>Charleston</option><option>Greensboro</option>
             <option>Myrtle Beach</option><option>Wilmington</option>
-            <option>Charlotte</option><option>Columbia</option><option>Greenville, SC</option>
+            <option>Charlotte</option><option>Columbia</option><option>Greenville</option>
           </select>
         </div>
       
+ <div class="col-6">
+          <label class="req" for="fieldTech">Field Technician</label>
+          <input id="fieldTech" type="text" placeholder="Tech name" required />
+        </div>
 
         <div class="col-6">
           <label class="req" for="customerName">Customer name</label>
@@ -60,13 +64,7 @@
             <label class="pill"><input type="radio" name="prepay" value="no" checked /> No</label>
           </div>
 
-          <!-- Pre-payment amount -->
-          <div id="prepayAmountWrap" class="grid hide" style="margin-top:10px;">
-            <div class="col-12 money" style="position:relative;">
-              <label for="prepayAmount">Pre-payment amount</label>
-              <input id="prepayAmount" type="text" inputmode="decimal" placeholder="0.00" />
-            </div>
-          </div>
+         
 
           <!-- Mock Change Orders (shown when Pre-payment = Yes) -->
           <div id="mockCOWrap" class="grid hide" style="margin-top:12px;">
@@ -78,19 +76,14 @@
           </div>
         </div>
 
-        <div class="col-6">
-          <div class="section-title">Change orders</div>
-          <div class="radio-row">
-            <label class="pill"><input type="radio" name="co" value="yes" /> Yes</label>
-            <label class="pill"><input type="radio" name="co" value="no" checked /> No</label>
-          </div>
-          <div id="coDetailsWrap" class="grid hide" style="margin-top:10px;">
-            <div class="col-12">
-              <label for="coDetails">Change order details</label>
-              <textarea id="coDetails" rows="3" placeholder="Describe change orders…"></textarea>
-            </div>
-          </div>
-        </div>
+     <div class="col-6 hide">
+  <div class="section-title">Change orders</div>
+  <div class="radio-row">
+    <label class="pill"><input type="radio" name="co" value="yes" /> Yes</label>
+    <label class="pill"><input type="radio" name="co" value="no" checked /> No</label>
+  </div>
+</div>
+
       </div>
 
       <!-- Project -->
@@ -109,19 +102,15 @@
           <div class="col-6 money" style="position:relative;">
             <label class="req" for="subPayAmt">Sub payment amount</label>
             <input id="subPayAmt" type="text" inputmode="decimal" placeholder="0.00" />
-            <div class="hint">Amount to pay subcontractor.</div>
           </div>
           <div class="col-6">
             <label class="req" for="subcontractor">Subcontractor</label>
             <input id="subcontractor" type="text" placeholder="Company or contact" />
           </div>
+          
         </div>
 
-        <div class="col-6">
-          <label class="req" for="fieldTech">Field Technician</label>
-          <input id="fieldTech" type="text" placeholder="Tech name" required />
-        </div>
-
+       
        
    
 
@@ -134,7 +123,7 @@
       <!-- Actions -->
       <div class="actions">
         <button type="button" class="secondary" onclick="document.getElementById('repairForm').reset(); toggleReveals(); refreshMockCO();">Clear</button>
-        <button type="submit">Print / Save</button>
+        <button type="submit">Save</button>
       </div>
     </form>
   </div>

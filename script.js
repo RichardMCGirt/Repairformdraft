@@ -15,18 +15,21 @@ function reveal(node, show){
 /* ===== Reveals (Prepay/CO + Commercial) ===== */
 function toggleReveals(){
   const prepayYes = document.querySelector('input[name="prepay"][value="yes"]');
-  const coYes = document.querySelector('input[name="co"][value="yes"]');
   const projCommercial = document.querySelector('input[name="ptype"][value="Commercial"]');
 
-  reveal(document.getElementById("prepayAmountWrap"), prepayYes && prepayYes.checked);
+  // Always keep Pre-payment visible; only toggle its inner fields
   reveal(document.getElementById("mockCOWrap"), prepayYes && prepayYes.checked);
-  reveal(document.getElementById("coDetailsWrap"), coYes && coYes.checked);
+
+  
+  // Commercial-only fields
   reveal(document.getElementById("commercialFields"), projCommercial && projCommercial.checked);
 
   // Require fields only when visible
   document.getElementById("subPayAmt").required = !!(projCommercial && projCommercial.checked);
   document.getElementById("subcontractor").required = !!(projCommercial && projCommercial.checked);
 }
+
+
 
 /* ===== Mock Change Orders =====
    - Generated whenever: Job name changes OR Pre-payment toggles to Yes.
@@ -84,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("jobName").addEventListener("input", refreshMockCO);
 
   // format $ fields on blur + basic input guards
-  ["subPayAmt","prepayAmount"].forEach(id => {
+  ["subPayAmt"].forEach(id => {
     const el = document.getElementById(id);
     el.addEventListener("blur", () => formatMoneyInput(el));
     el.addEventListener("input", () => {
